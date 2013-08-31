@@ -1,96 +1,23 @@
 <!doctype html>
+<html>
     <head>
         <title>Conway's Game of Life</title>
     </head>
-    <style>
-        html, body {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-        #title {
-            position: fixed;
-            margin: 0;
-            top: 5px;
-            right: 10px;
-            font-family: 'Helvetica Neue';
-            font-size: 20px;
-            text-transform: uppercase;
-            cursor: pointer;
-        }
-        #overview {
-            position: fixed;
-            display: none;
-            height: 100%;
-            width: 100%;
-            background-color: rgba(0,0,0,0.85);
-            box-sizing: border-box;
-        }
-        .container {
-            display: block;
-            position: relative;
-            box-sizing: border-box;
-            height: 100%;
-            width: 60%;
-            padding: 30px 0px;
-            margin: 0 auto;
-            color: rgba(255, 255, 255, 0.9);
-            font-family: 'Helvetica Neue';
-            font-size: 14px;
-            line-height: 1.3;
-        }
-        p.small {
-            font-size: 10px;
-            text-align: right;
-        }
-        a {
-            color: #0088cc;
-        }
-        #close {
-            display: inline-block;
-            background-color: rgba(255, 255, 255, 0.3);
-            width: 20px;
-            line-height: 20px;
-            text-align: center;
-            border-radius: 20px;
-            position: absolute;
-            top: 35px;
-            right: 10px;
-            text-decoration: none;
-            color: #fff;
-        }
-        table#life {
-            width: 100%;
-            height: 100%;
-            border: 2px solid #000;
-            table-layout: fixed;
-            margin: 0;
-            padding: 0;
-            border-collapse: collapse;
-        }
-        td {
-            border: 1px solid #f2f2f2;
-        }
-        .on {
-            background-color: #0088CC;
-        }
-    </style>
-    <body>
-        <!-- Eventually move to 2d canvas -->
-        <!-- <canvas id="life"></canvas> -->
+    <link rel="stylesheet" href="styles.css">
+    <body>      
         <h1 id="title">Conway's Game of Life</h1>
+        
         <div id="overview">
             <div class="container">
                 <a href="javascript:;" id="close">x</a>
                 <h2>Instructions</h2>
-                <p>Adjust the parameters of this game of life by specifying parameters via the query string. 
+                <p>Adjust the game of life by specifying parameters via the query string. 
                 </p>
                 <p>i.e. http://labs.danielna.com/life?<strong>param1=</strong><em>foo</em>&<strong>param2=</strong><em>bar</em></p>
                 <ul>
-                    <li><strong>rows:</strong> Number of rows in the grid</li>
-                    <li><strong>cols:</strong> Number of columns in the grid</li>
-                    <li><strong>seed:</strong> A percentage, between 0.0 - 1.0, that represents the percentage of cells to be set live in the first generation of cells.</li>
+                    <li><strong>rows:</strong> Number of rows in the grid. (default 75)</li>
+                    <li><strong>cols:</strong> Number of columns in the grid. (default 75)</li>
+                    <li><strong>seed:</strong> A percentage, between 0.0 - 1.0, that represents the percentage of cells to be set live in the first generation of cells. (default 0.4)</li>
                 </ul>
                 <p>Example for a 30x30, 50% seeded grid: <a href="./?cols=30&rows=30&seed=0.5">Link</a></p>
                 <hr/>
@@ -106,55 +33,13 @@
                 <p class="small">via <a href="http://en.wikipedia.org/wiki/Conway's_Game_of_Life" target="_blank">wikipedia</a></p>
             </div>
         </div>
-        <table id="life">
 
-        </table>
+        <table id="life"></table>
         
-
         <script src="gui.js"></script>
         <script src="cell.js"></script>
         <script src="grid.js"></script>
         <script src="life.js"></script>
-        <script>
-
-            // Return an object with query string parameters
-            function queryObj() {
-                var result = {}, keyValuePairs = location.search.slice(1).split('&');
-
-                keyValuePairs.forEach(function(keyValuePair) {
-                    keyValuePair = keyValuePair.split('=');
-                    result[keyValuePair[0]] = keyValuePair[1] || '';
-                });
-
-                return result;
-            }
-
-            // rows, cols, seed threshold (default: 0.1)
-            var defaults = {
-                    rows: '75',
-                    cols: '75',
-                    seed: '0.4'
-                },
-                qs = queryObj(),
-                rows = qs['rows'] ? qs['rows'] : defaults['rows'],
-                cols = qs['cols'] ? qs['cols'] : defaults['cols'],
-                seed = qs['seed'] ? qs['seed'] : defaults['seed'];
-
-            seed = seed.replace('/', '');
-
-            var life = new Life(rows, cols, seed);
-            setInterval(function() { life.generate(); }, 150);
-
-            
-            document.getElementById('close').addEventListener("click", function() {
-                document.getElementById("overview").style.display = 'none';
-            });
-
-
-            document.getElementById('title').addEventListener("click", function() {
-                document.getElementById("overview").style.display = 'block';
-            });
-
-        </script>
+        <script src="init.js"></script>
     </body>
 </html>

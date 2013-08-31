@@ -1,0 +1,72 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+#title {
+    position: fixed;
+    margin: 0;
+    top: 5px;
+    right: 10px;
+    font-family: 'Helvetica Neue';
+    font-size: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+#overview {
+    position: fixed;
+    display: none;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.85);
+    box-sizing: border-box;
+}
+.container {
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+    height: 100%;
+    width: 60%;
+    padding: 30px 0px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: 'Helvetica Neue';
+    font-size: 14px;
+    line-height: 1.3;
+}
+p.small {
+    font-size: 10px;
+    text-align: right;
+}
+a {
+    color: #0088cc;
+}
+#close {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.3);
+    width: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 20px;
+    position: absolute;
+    top: 35px;
+    right: 10px;
+    text-decoration: none;
+    color: #fff;
+}
+table#life {
+    width: 100%;
+    height: 100%;
+    border: 2px solid #000;
+    table-layout: fixed;
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+}
+td {
+    border: 1px solid #f2f2f2;
+}
+.on {
+    background-color: #0088CC;
+}

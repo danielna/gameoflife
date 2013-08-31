@@ -5,11 +5,10 @@
         this.colsNum = colsNum;
         this.threshold = (threshold) ? threshold : 0.1;
         this.grid = this.seed(rowsNum, colsNum);
-
+        
         this.gui = new Gui('life');
         this.gui.buildTable(rowsNum, colsNum);
         this.displayGrid();
-
     }
 
     // Randomly seed a % of the cells to start (10% default, in constructor)
@@ -66,7 +65,6 @@
         }  
         console.log("\n");
     };
-
 
     // Display the grid in the GUI
     Grid.prototype.displayGrid = function() {

@@ -28,9 +28,7 @@
             } else {
                 domCell.className = "off";
             }
-
         }
-
     };
 
     exports.Gui = Gui;
